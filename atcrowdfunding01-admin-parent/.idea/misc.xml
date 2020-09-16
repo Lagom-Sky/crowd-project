@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$/atcrowdfunding02-admin-webui" />
+    <file type="web" url="file://$PROJECT_DIR$/spring-security" />
+    <file type="web" url="file://$PROJECT_DIR$/../springboot" />
+  </component>
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/atcrowdfunding06-common-reverse/pom.xml" />
+        <option value="$PROJECT_DIR$/atcrowdfunding05-common-util/pom.xml" />
+        <option value="$PROJECT_DIR$/untitled/pom.xml" />
+        <option value="$PROJECT_DIR$/../spring-security-annotation/pom.xml" />
+        <option value="$PROJECT_DIR$/spring-security/pom.xml" />
+        <option value="$PROJECT_DIR$/../spring-boot/pom.xml" />
+        <option value="$PROJECT_DIR$/atcrowd-funding07-member-parent/atcrowd-funding07-member-parent/pom.xml" />
+        <option value="$PROJECT_DIR$/../atcrowdfunding07-member-parent/pom.xml" />
+        <option value="$PROJECT_DIR$/../srping-cloud-parent/pom.xml" />
+        <option value="$PROJECT_DIR$/../testLombok/pom.xml" />
+        <option value="$PROJECT_DIR$/../short-message/pom.xml" />
+        <option value="$PROJECT_DIR$/../test-spring-session-a/pom.xml" />
+        <option value="$PROJECT_DIR$/../test-spring-session-b/pom.xml" />
+      </list>
+    </option>
+    <option name="ignoredFiles">
+      <set>
+        <option value="$PROJECT_DIR$/../atcrowdfunding07-member-parent/atcrowdfunding12-member-authentication-consumer/src/test/java/untitled/pom.xml" />
+        <option value="$PROJECT_DIR$/../srping-cloud-parent/pom.xml" />
+        <option value="$PROJECT_DIR$/../srping-cloud-parent/spring-cloud-common/pom.xml" />
+        <option value="$PROJECT_DIR$/../srping-cloud-parent/spring-cloud-consumer/pom.xml" />
+        <option value="$PROJECT_DIR$/../srping-cloud-parent/spring-cloud-consumer2/pom.xml" />
+        <option value="$PROJECT_DIR$/../srping-cloud-parent/spring-cloud-dashboard/pom.xml" />
+        <option value="$PROJECT_DIR$/../srping-cloud-parent/spring-cloud-eureka/pom.xml" />
+        <option value="$PROJECT_DIR$/../srping-cloud-parent/spring-cloud-provider/pom.xml" />
+        <option value="$PROJECT_DIR$/../srping-cloud-parent/spring-cloud-zuul/pom.xml" />
+      </set>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_12" default="false" project-jdk-name="11" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
+</project>

@@ -1,0 +1,29 @@
+ali:
+  pay:
+    alipay-public-key: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAkTPeeoYlB/40DdBRqhfb4tEidbSVrUbSd+47wXM7c/0I2Rzg29jJDAECKygAaXQVBhlY1bK0C+HCnpo3WQeM8jewpE5v0wSMnRv+TBrBplrT5OpLpSjgRvlEISS6u66KamMG6E1YvydVvagcBnjEbpi9nkCFYnH7auPV076GPmAeW3+xPCvzR0EMmwNgkUQS3oCjUkCDL3fzZ4lISjiP2aXkZXVAktlLjzCxNdcxL0nyWcvpT3mQ7OjKTcpANcYt9k7aGJS+mkvJUpC+dWVzu9kpBQ+gFmmflLTiIm2+zh7PFobzWCdHmIq7ymsb5xR7nefoyGjUqCvRdBrhm3VgIQIDAQAB
+    app-id: 2021000119639454
+    charset: utf-8
+    gateway-url: https://openapi.alipaydev.com/gateway.do
+    merchant-private-key: MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCqReKxIOsnPmwmz8ZUVs16pDMlnQTeQM5XN3K/uHHsZxIW538DBjSB30rmdIzhaS5nRBvrcFKqabcX8/PB7SgHlKIpGYtPUBQzXou2QM3eh9o7ut5CPTsw/9YKpF3ry3ubfN3THffRNp+NC2y7rbT2t5K8PsbFnGWHUoZvLnxWzCKSXRivpOSrsA9059pfEXgW0g3xEGHEj5CDnrn7zsco7Bu9RzFKPid+/XGA5ZZ+whRgdlPlvDUhGESPL6F+k7CCiMhEABCcW5LyfH67APlr+9aHOdxQ2Mo8vCOGhAEQ43StsQLvLN/0ZVQ3df9iFLpR4OK11j6SwXPJuBxeYBJNAgMBAAECggEACI+Q8TTlfcieqWji4NSoahUdWTPGzeHWPf5Ur5z3ZVpdR3eGJEHInAr8+g88Eg02vwxmlvTDwzujb/nc9JAW5iKr8IMPRQKSsW58ecJSV3DfIQepKw1nD3Sdb1WKP1OwuEWT5YxpLEShyvabFeiK46ihIQPK/J57YE1e4vIkYDy36UM7syUUi+mVqFb2rws59HoLZbHXb4uL3DOwAllGzZRebr3C5k99Z25BphZe0E+XN8k8m8Qy0oudBdbB4dRvj3RzxLUFNLEICqzx35bk8nR/EgiJwK61RK0cQztHlEGdNGEwZkTSjcbAIVEVUeRxxH+c3jIRDZ3xMXNvJ9+SIQKBgQD3GmYEtzsKChWSrhXEvh/aCpoJ5cJFwukK33f22KyGgqbsntorLN2Z2ZklTOn1jB4JJmCWGa9j5u3B3eAax1MdtYTVS/CSUQkHOn/hM/fjI/jexRf4x+DuGB/MoHKvJOzARSr6dlHAB0qAtIXg1VX6j3cZNiwlvXAW55PhF/hlmQKBgQCwZ1PY0PZZCgNoMZnVJHxgxUjilBrSUq+oi47HBOOKx74m3/H8Pfpol6qapZG9fHAGnRvZOP3G1hAg12XEq2sKnNgwuRFJfCxXYEWaxEaoAdHnA1j9d684abp9QLGdyWAFcW1/xhDnAg7yRdq0RFplQD9Co0DNkqg9J2U2vrIa1QKBgQCzuL2OnH4SVTdPkdI/YFDmU2Op4zQjbRn2UIZ+QSVqR8iEvRzM3jrm1T7vxDs93oVR/lmtkkzgimtO38NJdsPbDdTpFeyJXusEGOY9s4CN8fHmhM9koGvWgDFQsTn4bRDM3wHdXQUkd6kWZzYgSsnYDVSAP8hoQpot7oy94KNHsQKBgQCPwEQlpXN675wDJphzhr4MpfhVG9gXmOYodUGukR9UEp20VD6ADYmn/iA60b3IKkWoPhNZmwXDKOIPwTffYslh5pqOaeHafmQr9/oAuv3RH1qL5MB6HTQexpoAQ9359QZYqSxQOXnApn7Dk4U77Y+0fvyOMzc1ztNmslnamN/O2QKBgCQJKexivAHx1ysR28RFFfnQ6o6KUyIg9egY+8jPegIOU7BPKeEE8DP7of3I/mLvgbDHl9SuWHDfqwm7p3R9ahVGCOSD/GRiw1T4O7n0XQ25neDSKPA17/jyIDFe/ilIk2dhn5pSl0KcfpsVad6OuSiv6fto0iMwRfzorNh417f5
+    notify-url: http://9n2s6z.natappfree.cc/pay/notify
+    return-url: http://localhost:81/pay/return
+    sign-type: RSA2
+server:
+  port: 7000
+spring:
+  application:
+    name: atguigu-crowd-pay
+  redis:
+    host: 127.0.0.1
+  session:
+    store-type: redis
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:1000/eureka
+ribbon:
+  ReadTimeout: 10000
+  ConnectTimeout: 10000

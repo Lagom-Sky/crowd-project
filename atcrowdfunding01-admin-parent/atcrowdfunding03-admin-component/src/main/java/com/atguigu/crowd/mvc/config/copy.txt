@@ -1,0 +1,76 @@
+@ExceptionHandler(value = NullPointerException.class)
+    public ModelAndView resolveNullPointException(
+            //实际捕获的异常类型                           //请求的对象
+            NullPointerException nullPointerException,
+            HttpServletRequest httpServletRequest,
+            //响应对象
+            HttpServletResponse httpServletResponse) throws IOException {
+        //获取异常的消息
+        String message = nullPointerException.getMessage();
+        // 1.判断当前的请求类型时Ajax还是普通的页面的请求
+        boolean   judgeRequestType = CrowdUtil.judgeRequestType(httpServletRequest);
+
+        //如果是Ajax请求
+        if(judgeRequestType){
+            //3.创建ResultEntity对象返回信息
+           ResultEntity resultEntity =  ResultEntity.failed(message);
+
+           //4.将对象转为Gson对象
+            Gson gson = new Gson();
+            //5.将resultEntity转为json字符串
+            String json = gson.toJson(resultEntity);
+
+            //6.将json字符串作为响应体返回给浏览器
+            httpServletResponse.getWriter().write(json);
+
+            //7.已经通过原生的response对象对请求做了响应，所以不提供ModelAndView对象
+            return null;
+        }//如果不是Ajax请求则创建ModelAndView
+        else {
+            //创建对象
+            ModelAndView modelAndView = new ModelAndView();
+            //将Exception对象存入模型
+            modelAndView.addObject("exception", nullPointerException);
+            //是指对应的视图名称
+            modelAndView.setViewName("system-error");
+            return modelAndView;
+        }
+    }
+    @ExceptionHandler(value = ArithmeticException.class)
+    public ModelAndView resolveMathException(
+            //实际捕获的异常类型                           //请求的对象
+            ArithmeticException arithmeticException,
+            HttpServletRequest httpServletRequest,
+            //响应对象
+            HttpServletResponse httpServletResponse) throws IOException {
+        //获取异常的消息
+        String message = arithmeticException.getMessage();
+        // 1.判断当前的请求类型时Ajax还是普通的页面的请求
+        boolean   judgeRequestType = CrowdUtil.judgeRequestType(httpServletRequest);
+
+        //如果是Ajax请求
+        if(judgeRequestType){
+            //3.创建ResultEntity对象返回信息
+           ResultEntity resultEntity =  ResultEntity.failed(message);
+
+           //4.将对象转为Gson对象
+            Gson gson = new Gson();
+            //5.将resultEntity转为json字符串
+            String json = gson.toJson(resultEntity);
+
+            //6.将json字符串作为响应体返回给浏览器
+            httpServletResponse.getWriter().write(json);
+
+            //7.已经通过原生的response对象对请求做了响应，所以不提供ModelAndView对象
+            return null;
+        }//如果不是Ajax请求则创建ModelAndView
+        else {
+            //创建对象
+            ModelAndView modelAndView = new ModelAndView();
+            //将Exception对象存入模型
+            modelAndView.addObject("exception", arithmeticException);
+            //是指对应的视图名称
+            modelAndView.setViewName("system-error");
+            return modelAndView;
+        }
+    }

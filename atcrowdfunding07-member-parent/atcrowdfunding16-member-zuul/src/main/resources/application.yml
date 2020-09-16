@@ -1,0 +1,34 @@
+server:
+  port: 81
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:1000/eureka
+zuul:
+  routes:
+    crowd-portal:
+      service-id: atguigu-crowd-auth
+      path: /** #这里要加两个** 不然无法访问静态资源
+    crowd-project:
+      serviceId: atguigu-crowd-project
+      path: /project/**
+    crowd-order:
+      serviceId: atguigu-crowd-order
+      path: /order/**
+    crowd-pay:
+      serviceId: atguigu-crowd-pay
+      path: /pay/**
+  ignored-services: "*"
+  sensitive-headers: "*"
+ribbon:        #设置ribbon的超时时间小于zuul的超时时间
+  ReadTimeout: 10000
+  ConnectTimeout: 10000
+spring:
+  application:
+    name: atgugi-crowd-zuul
+  redis:
+    host: 127.0.0.1
+  session:
+    store-type: redis
+
+

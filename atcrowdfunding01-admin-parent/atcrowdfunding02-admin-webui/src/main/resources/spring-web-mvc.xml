@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/mvc
+       http://www.springframework.org/schema/mvc/spring-mvc.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd">
+
+
+    <context:component-scan base-package="com.atguigu.crowd.mvc"></context:component-scan>
+
+<!--    配置springMvc的注解驱动-->
+    <mvc:annotation-driven></mvc:annotation-driven>
+<!--    配置视图解析器-->
+    <bean id="viesResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/"></property>
+        <property name="suffix" value=".jsp"></property>
+    </bean>
+<!--    如果Handler处理函数只是为了跳转一个页面，可以不写用Mvc：view -contorller 代替-->
+<!--    <mvc:view-controller path=""-->
+    <mvc:view-controller path="/admin/to/login/page.html" view-name="admin-login"></mvc:view-controller>
+    <mvc:view-controller path="/admin/to/main/page.html" view-name="admin-main"></mvc:view-controller>
+    <mvc:view-controller path="/admin/to/add/page.html" view-name="admin-add"></mvc:view-controller>
+    <mvc:view-controller path="/role/to/page.html" view-name="role-page"></mvc:view-controller>
+    <mvc:view-controller path="/menu/to/page.html" view-name="menu-page"></mvc:view-controller>
+
+<!--    基于xml的异常映射-->
+    <bean id="simpleMappingExceptionResolver" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+<!--        配置异常的类型和具体视图页面的对应关系-->
+        <property name="exceptionMappings">
+            <props>
+<!--                key属性指定全类名-->
+<!--                标签体中写对应的视图，这个值是要加前后缀的得到具体的路径-->
+                <prop key="java.lang.Exception">system-error</prop>
+            </props>
+        </property>
+    </bean>
+<!--    注册拦截器-->
+<!--    <mvc:interceptors>-->
+<!--        <mvc:interceptor>-->
+<!--&lt;!&ndash;            配置需要拦截的资源&ndash;&gt;-->
+<!--&lt;!&ndash;            /*对应一层路径 /** 对应多层路径&ndash;&gt;-->
+<!--            <mvc:mapping path="/**"/>-->
+
+<!--&lt;!&ndash;            配置不拦截的资源&ndash;&gt;-->
+<!--            <mvc:exclude-mapping path="/admin/to/login/page.html"/>-->
+<!--            <mvc:exclude-mapping path="/admin/do/login.html"/>-->
+<!--            <mvc:exclude-mapping path="/admin/do/logout.html"/>-->
+<!--            <bean class="com.atguigu.crowd.mvc.interceptor.LoginInterceptor"></bean>-->
+<!--        </mvc:interceptor>-->
+<!--    </mvc:interceptors>-->
+</beans>

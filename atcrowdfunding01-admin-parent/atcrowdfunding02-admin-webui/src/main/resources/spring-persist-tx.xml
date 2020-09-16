@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop.xsd
+       http://www.springframework.org/schema/tx
+       http://www.springframework.org/schema/tx/spring-tx.xsd">
+<!--    配置自动扫描的包，主要是业务逻辑层的Service扫描到ioc容器中中-->
+    <context:component-scan base-package="com.atguigu.crowd.service"></context:component-scan>
+<!--配置事务管理器-->
+    <bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+<!--        装配数据源-->
+        <property name="dataSource" ref="dataSource"></property>
+    </bean>
+
+<!--    配置事务的切面-->
+    <aop:config>
+<!--        考虑到后面我们将整合SpringSecurity.避免将UserDetailService加入到事务控制，让切入点表达式定位到SerImpl-->
+        <aop:pointcut id="txPoint" expression="execution(* *..*ServiceImpl.*(..))"/>
+        <!--   将切入点表达式式和事务管理器关联起来 -->
+        <aop:advisor advice-ref="txAdvice" pointcut-ref="txPoint"></aop:advisor>
+    </aop:config>
+<!--    配置事务的通知-->
+    <tx:advice id="txAdvice" transaction-manager="txManager">
+<!--       配置事务的属性-->
+        <tx:attributes>
+<!--            查询方法，配置只读属性，让数据库知道，能够进行一些优化-->
+            <tx:method name="get*" read-only="true"/>
+            <tx:method name="find*" read-only="true"></tx:method>
+            <tx:method name="query*" read-only="true"></tx:method>
+            <tx:method name="count*" read-only="true"></tx:method>
+<!--            查询写方法 配置事务的传播行为，回滚异常-->
+<!--            propagation属性：
+                默认值：REQUIRED 表示当前方法必须工作在事务中，如果当前线程没有事务就自己开启事务，否则使用当前线程的已有的事务
+                    有别人的事务可能会被错误的回滚，本身没有异常
+                REQUIRES_NEW : 必须有事务而且必须是自己新开的事务
+                    不会受到其他事务回滚的影响
+-->
+<!--           rollback-for 配置事务的方法针对什么样的异常回滚
+                默认是运行时异常回滚
+                建议是运行时异常和编译时异常都回滚-->
+<!--            在基于xml的声明式事务中，事务的属性tx:method是必须配置的，如果方法没有对应的tx:method，那么事务对这个方法是不生效的-->
+            <tx:method name="save*" propagation="REQUIRES_NEW" rollback-for="java.lang.Exception"/>
+            <tx:method name="update*" propagation="REQUIRES_NEW" rollback-for="java.lang.Exception"/>
+            <tx:method name="remove*" propagation="REQUIRES_NEW" rollback-for="java.lang.Exception"/>
+            <tx:method name="batch" propagation="REQUIRES_NEW" rollback-for="java.lang.Exception"/>
+        </tx:attributes>
+    </tx:advice>
+<!--    配置bCryptPasswordEncoder-->
+    <bean id="bCryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"></bean>
+
+</beans>

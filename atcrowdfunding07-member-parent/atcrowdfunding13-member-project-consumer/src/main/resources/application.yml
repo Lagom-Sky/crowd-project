@@ -1,0 +1,26 @@
+server:
+  port: 5000
+spring:
+  application:
+    name: atguigu-crowd-project
+  redis:
+    host: 127.0.0.1
+  session:
+    store-type: redis
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:1000/eureka
+aliyun:
+  oss:
+    access-key-id: LTAI4GBNPPR3GFUB2Pv7U7dU
+    access-key-secret: h7i1CP7bujubK5mefIqnw9drQreyYz
+    bucket-domain: http://atguigu1998.oss-cn-beijing.aliyuncs.com
+    bucket-name: atguigu1998
+    end-point: http://oss-cn-beijing.aliyuncs.com
+ribbon:        #设置ribbon的超时时间小于zuul的超时时间
+  ReadTimeout: 10000
+  ConnectTimeout: 10000

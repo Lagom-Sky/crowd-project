@@ -1,0 +1,24 @@
+server:
+  port: 4000
+spring:
+  application:
+    name: atguigu-crowd-auth
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+  redis:
+    host: 127.0.0.1
+  session:
+    store-type: redis
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:1000/eureka
+short:
+  message:
+    app-code: bf1e3c537cdc41558143747de9073058
+    host: https://aliapi.market.alicloudapi.com
+    method: POST
+    path: /smsApi/verifyCode/send
+    sign: 540
+    skin: 1234
