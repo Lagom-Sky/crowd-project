@@ -4,5 +4,6 @@ public class testVariable {
     }
     public void test(){
         int i ;
+        System.out.println("hello 这里是test new branch");
     }
 }
