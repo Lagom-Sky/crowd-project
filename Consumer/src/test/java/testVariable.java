@@ -5,5 +5,6 @@ public class testVariable {
     public void test(){
         int i ;
         System.out.println("hello 这里是test new branch");
+        System.out.println("加油学会git指令");
     }
 }
