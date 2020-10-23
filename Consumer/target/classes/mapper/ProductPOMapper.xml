@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.swpu.edu.mapper.ProductPOMapper">
+    <resultMap id="BaseResultMap" type="com.swpu.edu.entity.ProductPO">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="product_name" property="productName" jdbcType="VARCHAR"/>
+        <result column="price" property="price" jdbcType="DECIMAL"/>
+        <result column="version" property="version" jdbcType="INTEGER"/>
+        <result column="total" property="total" jdbcType="INTEGER"/>
+    </resultMap>
+    <insert id="insertNewProduct" parameterType="com.swpu.edu.entity.ProductPO" useGeneratedKeys="true"
+            keyProperty="id">
+        insert into product (id, product_name, price, version, total)
+        values (#{id,jdbcType=INTEGER}, #{productName,jdbcType=VARCHAR}, #{price,jdbcType=DECIMAL},
+        #{version,jdbcType=INTEGER}, #{total,jdbcType=LONGVARCHAR})
+    </insert>
+    <select id="selectProductById" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select total,version from product where id = #{id,jdbcType=INTEGER}
+    </select>
+    <update id="updateProductCount" parameterType="com.swpu.edu.entity.ProductPO">
+        update product set
+        total = #{total,jdbcType=INTEGER},
+        version = version + 1
+        where id = #{id} and version = #{version}
+    </update>
+</mapper>

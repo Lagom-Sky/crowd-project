@@ -26,9 +26,6 @@ import java.util.concurrent.TimeUnit;
 
 @Controller
 public class MemberHandler {
-
-
-
     @Autowired
     private ShortMessageProperties shortMessageProperties;
 

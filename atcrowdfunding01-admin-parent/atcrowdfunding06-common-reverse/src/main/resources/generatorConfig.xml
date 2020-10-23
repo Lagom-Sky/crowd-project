@@ -10,8 +10,8 @@
         </commentGenerator>
         <!--数据库连接的信息：驱动类、连接地址、用户名、密码 -->
         <jdbcConnection
-                driverClass="com.mysql.cj.jdbc.Driver" connectionURL="jdbc:mysql://localhost:3306/yqadmindb?serverTimezone=GMT%2B8"
-                userId="root" password="981211">
+                driverClass="com.mysql.cj.jdbc.Driver" connectionURL="jdbc:mysql://114.215.199.49:3306/testOrder?serverTimezone=GMT%2B8&amp;nullCatalogMeansCurrent=true"
+                userId="root" password="981211" >
         </jdbcConnection>
         <!-- 默认 false，把 JDBC DECIMAL 和 NUMERIC 类型解析为 Integer，为 true 时把
         JDBC DECIMAL
@@ -20,7 +20,7 @@
             <property name="forceBigDecimals" value="false"/>
         </javaTypeResolver>
         <!-- targetProject:生成 Entity 类的路径 -->
-        <javaModelGenerator targetProject=".\src\main\java" targetPackage="com.web.entity.po">
+        <javaModelGenerator targetProject=".\src\main\java" targetPackage="com.swpu.entity.po">
             <!-- enableSubPackages:是否让 schema 作为包的后缀 -->
             <property name="enableSubPackages" value="false"/>
             <!-- 从数据库返回的值被清理前后的空格 -->
@@ -28,18 +28,18 @@
         </javaModelGenerator>
         <!-- targetProject:XxxMapper.xml 映射文件生成的路径 -->
         <sqlMapGenerator targetProject=".\src\main\java"
-                         targetPackage="com.web.mapper.xml">
+                         targetPackage="com.swpu.mapper.xml">
             <!-- enableSubPackages:是否让 schema 作为包的后缀 -->
             <property name="enableSubPackages" value="false"/>
         </sqlMapGenerator>
         <!-- targetPackage：Mapper 接口生成的位置 -->
         <javaClientGenerator type="XMLMAPPER"
                              targetProject=".\src\main\java"
-                             targetPackage="com.web.mapper">
+                             targetPackage="com.swpu.mapper">
             <!-- enableSubPackages:是否让 schema 作为包的后缀 -->
             <property name="enableSubPackages" value="false"/>
         </javaClientGenerator>
         <!-- 数据库表名字和我们的 entity 类对应的映射指定 -->
-        <table tableName="admin" domainObjectName="AdminPO" />
+        <table tableName="product" domainObjectName="productPO" />
     </context>
 </generatorConfiguration>

@@ -18,16 +18,18 @@ public class SecurityAdmin extends User {
 
     public SecurityAdmin(Admin originalAdmin,
 
-                         // 传入角色权限信息的集合
-                         List<GrantedAuthority> authorities) {
+         // 传入角色权限信息的集合
+         List<GrantedAuthority> authorities) {
+
         // 调用父类的构造器
         super(originalAdmin.getLoginAcct(), originalAdmin.getUserPswd(), authorities);
-        // 传入原始的Admin对象
 
+        // 传入原始的Admin对象
         this.originalAdmin = originalAdmin;
 
         // 设置原始的Admin 对象中的密码进行擦除 // 使用父类的构造起来进行检查
         this.originalAdmin.setUserPswd(null);
+
     }
 
     public Admin getOriginalAdmin() {

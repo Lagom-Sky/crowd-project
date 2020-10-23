@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.swpu.edu.mapper.UserPOMapper" >
+  <resultMap id="BaseResultMap" type="com.swpu.edu.entity.UserPO" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="user_name" property="userName" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+  </resultMap>
+  <insert id="insertUserInfo" parameterType="com.swpu.edu.entity.UserPO" useGeneratedKeys="true" keyProperty="id">
+    <selectKey keyProperty="id" resultType="java.lang.String" order="BEFORE">
+      select replace(UUID(),'-','')
+    </selectKey>
+    insert into user (id,user_name,password) values
+    (#{id,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR})
+  </insert>
+</mapper>

@@ -25,6 +25,7 @@ public class AuthServiceImpl implements AuthService {
 
     @Override
     public List<Auth> getAll() {
+
         return authMapper.selectByExample(new AuthExample());
     }
 
